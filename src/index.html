@@ -46,106 +46,118 @@
 <body class="bg-sage-100 text-ink font-sans antialiased">
  
   <section class="relative overflow-hidden min-h-screen flex flex-col" id="home">
- 
+
     <img src="assets/hero.jpg" class=" absolute inset-0 -z-10 w-full h-full object-cover" data-img="hero-bg" aria-label="Imagem de fundo: montanhas com neblina">
     <div class="absolute inset-0 -z-10 bg-gradient-to-b from-black/35 via-black/10 to-sage-100"></div>
  
     <!-- NAV -->
-    <header class="relative z-10">
-      <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 md:px-10 py-6 text-white">
-        <a href="#" class="font-serif text-3xl tracking-wide text-white">GrandHorizon</a>
- 
-        <button id="menu-toggle" class="md:hidden text-white" aria-label="Abrir menu" aria-expanded="false">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <header class="fixed top-0 left-0 right-0 z-50">
+      <nav class="navbar-glass max-w-6xl mx-auto flex items-center justify-between px-6 md:px-10 py-4 md:py-5 text-white">
+        <a href="#" class="logo-glass font-serif text-3xl tracking-wide text-white font-bold">GrandHorizon</a>
+
+        <button id="menu-toggle" class="menu-toggle-btn md:hidden text-white" aria-label="Abrir menu" aria-expanded="false">
+          <svg class="menu-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/>
           </svg>
+          <svg class="close-icon hidden" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </button>
- 
-        <ul class="hidden md:flex items-center gap-8 text-sm text-white/90">
-          <li><a href="#home" class="hover:text-white transition-colors">Início</a></li>
-          <li><a href="#tracking" class="hover:text-white transition-colors">Destaques</a></li>
-          <li><a href="#bene" class="hover:text-white transition-colors">Benefícios</a></li>
-          <li><a href="#feedbacks" class="hover:text-white transition-colors">Depoimentos</a></li>
-          <li><a href="#about" class="hover:text-white transition-colors">Sobre</a></li>
+
+        <ul class="nav-links hidden md:flex items-center gap-8 text-sm text-white/90">
+          <li><a href="#home" class="nav-link">Início</a></li>
+          <li><a href="#tracking" class="nav-link">Destaques</a></li>
+          <li><a href="#bene" class="nav-link">Benefícios</a></li>
+          <li><a href="#feedbacks" class="nav-link">Depoimentos</a></li>
+          <li><a href="#about" class="nav-link">Sobre</a></li>
         </ul>
- 
-        <a href="" class="hidden md:inline-block border border-white/70 text-white text-sm px-5 py-2 rounded-full hover:bg-white hover:text-ink transition-colors">
+
+        <a href="" class="cta-button hidden md:inline-block text-white text-sm px-6 py-2.5 rounded-full transition-all duration-300">
           Embarcar
         </a>
       </nav>
- 
-      <ul id="mobile-menu" class="hidden md:hidden flex-col gap-4 px-6 pb-6 text-white/90 text-sm">
-        <li><a href="#home">Início</a></li>
-        <li><a href="#tracking">Destaques</a></li>
-        <li><a href="#spa">Benefícios</a></li>
-        <li><a href="#feedback">Depoimentos</a></li>
-        <li><a href="#about">Sobre</a></li>
-        <li><a href="" class="inline-block border border-white/70 px-5 py-2 rounded-full w-max">Embarcar</a></li>
+
+      <ul id="mobile-menu" class="mobile-menu hidden md:hidden flex-col gap-4 px-6 pb-6 text-white/90 text-sm">
+        <li><a href="#home" class="mobile-nav-link">Início</a></li>
+        <li><a href="#tracking" class="mobile-nav-link">Destaques</a></li>
+        <li><a href="#bene" class="mobile-nav-link">Benefícios</a></li>
+        <li><a href="#feedbacks" class="mobile-nav-link">Depoimentos</a></li>
+        <li><a href="#about" class="mobile-nav-link">Sobre</a></li>
+        <li><a href="" class="mobile-cta inline-block px-6 py-2.5 rounded-full w-max text-center">Embarcar</a></li>
       </ul>
     </header>
  
     <div class="relative z-10 max-w-3xl mx-auto text-center px-6 pt-16 pb-40 md:pt-24 md:pb-56">
-      <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-white/80 mb-4">Sistema de Hospedagem</p>
-      <h1 class="font-serif text-white text-5xl md:text-7xl leading-[1.05] mb-6">
+      <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-white/80 mb-4 reveal">Sistema de Hospedagem</p>
+      <h1 class="font-serif text-white text-5xl md:text-7xl leading-[1.05] mb-6 reveal">
         Sua próxima experiência de luxo começa aqui.
       </h1>
-      <p class="text-white/85 text-sm md:text-base max-w-xl mx-auto mb-9 leading-relaxed">
+      <p class="text-white/85 text-sm md:text-base max-w-xl mx-auto mb-9 leading-relaxed reveal">
         Quartos sofisticados, atendimento impecável e momentos que transformam uma simples viagem em uma lembrança inesquecível.
       </p>
       <a href=""
-         class="inline-block bg-clay-400/90 hover:bg-clay-500 text-white text-sm tracking-wide px-8 py-3 rounded-full transition-colors">
+         class="inline-block bg-clay-400/90 hover:bg-clay-500 text-white text-sm tracking-wide px-8 py-3 rounded-full transition-colors reveal-scale">
         Embarcar
       </a>
     </div>
  
   </section>
  
-  <section id="tracking" class="relative z-10 max-w-6xl mx-auto px-6 md:px-10 -mt-24 md:-mt-32 pb-20">
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+  <section id="tracking" class="relative z-10 max-w-6xl mx-auto px-6 md:px-10 -mt-24 md:-mt-32 pb-20 reveal">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 reveal-stagger">
  
       <article class="room-card">
         <img src="https://images.unsplash.com/photo-1737517302831-e7b8a8eaa97c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
         <h3 class="font-serif text-2xl mt-4 text-center">Deluxe Suite</h3>
         <div class="stars text-center" aria-label="4 de 5 estrelas">★★★★★</div>
+        <a href="" class="room-cta mt-4 w-full inline-block text-center text-sm px-6 py-2.5 rounded-full transition-all duration-300">
+          Reservar
+        </a>
       </article>
  
       <article class="room-card">
         <img src="https://plus.unsplash.com/premium_photo-1661962688308-2b00b88b9765?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
         <h3 class="font-serif text-2xl mt-4 text-center">Suíte com vista para o mar</h3>
         <div class="stars text-center" aria-label="4 de 5 estrelas">★★★★★</div>
+        <a href="" class="room-cta mt-4 w-full inline-block text-center text-sm px-6 py-2.5 rounded-full transition-all duration-300">
+          Reservar
+        </a>
       </article>
  
       <article class="room-card">
         <img src="https://plus.unsplash.com/premium_photo-1661875135365-16aab794632f?q=80&w=653&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="foto da suite">
         <h3 class="font-serif text-2xl mt-4 text-center">Suíte com SPA incluso</h3>
         <div class="stars text-center" aria-label="4 de 5 estrelas">★★★★★</div>
+        <a href="" class="room-cta mt-4 w-full inline-block text-center text-sm px-6 py-2.5 rounded-full transition-all duration-300">
+          Reservar
+        </a>
       </article>
  
     </div>
   </section>
 
-  <section id="bene" class="max-w-5xl mx-auto px-6 md:px-10 py-10 md:py-16 text-center">
+  <section id="bene" class="max-w-5xl mx-auto px-6 md:px-10 py-10 md:py-16 text-center reveal">
     <h2 class="font-serif text-4xl md:text-5xl mb-14">Benefícios</h2>
- 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-12">
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-12 reveal-stagger">
       <div class="treatment">
-        <i class="bi bi-wifi text-3xl"></i>
+        <i class="bi bi-wifi text-3xl reveal-scale"></i>
         <h3 class="font-serif text-xl mb-2">Conexão</h3>
         <p class="text-sm text-ink/60 max-w-[220px] mx-auto leading-relaxed">
           Rede de sinal disponível em todas as áreas do hotel.
         </p>
       </div>
- 
+
       <div class="treatment">
-        <i class="bi bi-coin text-3xl"></i>
+        <i class="bi bi-coin text-3xl reveal-scale"></i>
         <h3 class="font-serif text-xl mb-2">Custo Benefício</h3>
         <p class="text-sm text-ink/60 max-w-[220px] mx-auto leading-relaxed">
           Excelente qualidade e conforto por um orçamento justo.
         </p>
       </div>
- 
+
       <div class="treatment">
-        <i class="bi bi-lightning-fill text-3xl"></i>
+        <i class="bi bi-lightning-fill text-3xl reveal-scale"></i>
         <h3 class="font-serif text-xl mb-2">Reserva Rápida</h3>
         <p class="text-sm text-ink/60 max-w-[220px] mx-auto leading-relaxed">
           Faça sua reserva em poucos minutos com o nosso sistema.
@@ -154,10 +166,10 @@
     </div>
   </section>
  
-  <section id="wellness" class="max-w-5xl mx-auto px-6 md:px-10 py-16 md:py-24 mt-10">
+  <section id="feedbacks" class="max-w-5xl mx-auto px-6 md:px-10 py-16 md:py-24 mt-10 reveal">
     <h2 class="font-serif text-center text-4xl md:text-5xl mb-14">Depoimentos de hóspedes</h2>
  
-    <div class="testimonial-carousel relative" tabindex="0" aria-roledescription="carrossel" aria-label="Depoimentos de hóspedes">
+    <div class="testimonial-carousel relative reveal-scale" tabindex="0" aria-roledescription="carrossel" aria-label="Depoimentos de hóspedes">
  
       <button type="button" id="testimonial-prev" aria-label="Depoimento anterior"
         class="carousel-btn carousel-btn--prev">
@@ -220,28 +232,74 @@
     </div>
   </section>
  
-  <section id="booking" class="sr-only">Reservas</section>
-  <section id="about" class="sr-only">Sobre</section>
- 
-  <footer class="border-t border-ink/10 py-6">
-    <div class="max-w-6xl mx-auto px-6 md:px-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-ink/70">
-      <div class="flex gap-6">
-        <a href="#" class="hover:text-ink transition-colors">Contact</a>
-        <a href="#" class="hover:text-ink transition-colors">FAQ</a>
+  <footer class="relative bg-sage-900 text-sage-100 pt-16 pb-8 mt-10 overflow-hidden reveal" id="about">
+    <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-clay-400/10 blur-3xl"></div>
+    <div class="absolute -bottom-32 -left-20 w-72 h-72 rounded-full bg-sage-400/10 blur-3xl"></div>
+
+    <div class="relative max-w-6xl mx-auto px-6 md:px-10">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10 reveal-stagger">
+
+        <div class="md:col-span-2">
+          <a href="#" class="font-serif text-3xl text-white">GrandHorizon</a>
+          <p class="text-sm text-sage-100/70 leading-relaxed mt-4 max-w-sm">
+            Mais do que uma hospedagem, uma experiência. Desde a recepção até o check-out,
+            cuidamos de cada detalhe para transformar sua estadia em uma memória que você
+            vai querer reviver — com conforto, sofisticação e um atendimento genuinamente humano.
+          </p>
+          <div class="flex items-center gap-4 mt-6">
+            <a href="#" aria-label="Instagram" class="footer-social">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="#" aria-label="Facebook" class="footer-social">
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a href="#" aria-label="WhatsApp" class="footer-social">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Links rápidos -->
+        <div>
+          <h4 class="font-serif text-lg text-white mb-4">Navegação</h4>
+          <ul class="space-y-2 text-sm text-sage-100/70">
+            <li><a href="#home" class="hover:text-white transition-colors">Início</a></li>
+            <li><a href="#tracking" class="hover:text-white transition-colors">Destaques</a></li>
+            <li><a href="#bene" class="hover:text-white transition-colors">Benefícios</a></li>
+            <li><a href="#feedbacks" class="hover:text-white transition-colors">Depoimentos</a></li>
+          </ul>
+        </div>
+
+        <!-- Contato -->
+        <div>
+          <h4 class="font-serif text-lg text-white mb-4">Contato</h4>
+          <ul class="space-y-3 text-sm text-sage-100/70">
+            <li class="flex items-start gap-2">
+              <i class="bi bi-geo-alt mt-0.5"></i>
+              <span>Av. das Montanhas, 1200 — Fortaleza, CE</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="bi bi-telephone"></i>
+              <span>(85) 4002-8922</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="bi bi-envelope"></i>
+              <span>contato@grandhorizon.com</span>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="flex gap-4">
-        <a href="#" aria-label="Twitter" class="hover:text-ink transition-colors">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 00-7 3.7A11.6 11.6 0 013 4.9a4.1 4.1 0 001.3 5.5c-.7 0-1.3-.2-1.9-.5v.1c0 2 1.4 3.6 3.3 4a4.1 4.1 0 01-1.9.1c.5 1.6 2 2.8 3.8 2.9A8.2 8.2 0 012 18.6a11.6 11.6 0 006.3 1.8c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg>
-        </a>
-        <a href="#" aria-label="Instagram" class="hover:text-ink transition-colors">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
-        </a>
-        <a href="#" aria-label="X" class="hover:text-ink transition-colors">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="1.8"/></svg>
-        </a>
+
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 text-xs text-sage-100/50">
+        <p>&copy; <span id="footer-year"></span> GrandHorizon. Desenvolvido por <a href="https://github.com/calebsv" class="text-white">Caleb Lira</a>. Todos os direitos reservados.</p>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-sage-100 transition-colors">Política de Privacidade</a>
+          <a href="#" class="hover:text-sage-100 transition-colors">Termos de Uso</a>
+        </div>
       </div>
     </div>
-  </footer>    
+  </footer>
+  
   <script src="script.js" type=""></script>
 </body>
 </html>

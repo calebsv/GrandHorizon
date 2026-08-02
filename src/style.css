@@ -25,6 +25,46 @@ body {
   border-radius: 1rem;
   padding: 0.75rem 0.75rem 1.25rem;
   box-shadow: 0 10px 30px -12px rgba(43, 42, 38, 0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px -12px rgba(43, 42, 38, 0.25);
+}
+
+.room-cta {
+  background: linear-gradient(135deg, #c9948d, #b87971);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(184, 121, 113, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.room-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.room-cta:hover {
+  background: linear-gradient(135deg, #d9b3ae, #c9948d);
+  box-shadow: 0 6px 20px rgba(184, 121, 113, 0.5);
+  transform: translateY(-2px);
+}
+
+.room-cta:hover::before {
+  left: 100%;
+}
+
+.room-cta:active {
+  transform: translateY(0);
 }
 
 .room-card img {
@@ -76,16 +116,12 @@ body {
   box-sizing: border-box;
 }
  
-/* respeita usuários que preferem menos movimento */
 @media (prefers-reduced-motion: reduce) {
   .carousel-track {
     transition: none;
   }
 }
  
-/* botões esquerda / direita
-   Posicionamento feito 100% em CSS (sem utilitários de transform do
-   Tailwind) para não colidir com o transform usado no estado :active. */
 .carousel-btn {
   position: absolute;
   top: 50%;
@@ -162,8 +198,364 @@ body {
   border-radius: 9999px;
 }
  
-/* ---------- Ícone de tratamento ---------- */
 .treatment svg {
   color: #6b7a5e;
+}
+
+.navbar-glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  margin-top: 0.75rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-glass:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-glass.scrolled {
+  background: #50454526;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  margin-top: 0.75rem;
+}
+
+/* ---------- Logo styling ---------- */
+.logo-glass {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.logo-glass::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #d9b3ae, #c9948d);
+  transition: width 0.3s ease;
+}
+
+.logo-glass:hover::after {
+  width: 100%;
+}
+
+.logo-glass:hover {
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+/* ---------- Navigation links ---------- */
+.nav-link {
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.nav-link:hover::before {
+  width: 100%;
+}
+
+/* ---------- CTA Button ---------- */
+.cta-button {
+  background: linear-gradient(135deg, #c9948d, #b87971);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(184, 121, 113, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.cta-button:hover {
+  background: linear-gradient(135deg, #d9b3ae, #c9948d);
+  box-shadow: 0 6px 20px rgba(184, 121, 113, 0.6);
+  transform: translateY(-2px);
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+/* ---------- Mobile menu toggle ---------- */
+.menu-toggle-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.menu-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+.menu-icon, .close-icon {
+  transition: all 0.3s ease;
+}
+
+/* ---------- Mobile menu ---------- */
+.mobile-menu {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  margin: 1rem 1.5rem 0;
+  padding: 1.5rem;
+  display: none;
+}
+
+.mobile-menu:not(.hidden) {
+  display: flex;
+  animation: mobileMenuOpen 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes mobileMenuOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.mobile-menu.hidden .mobile-cta {
+  display: none;
+}
+
+.mobile-nav-link {
+  display: block;
+  padding: 0.875rem 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.mobile-menu:not(.hidden) .mobile-nav-link {
+  animation: mobileNavItemIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.mobile-menu:not(.hidden) .mobile-nav-link:nth-child(1) { animation-delay: 0.1s; }
+.mobile-menu:not(.hidden) .mobile-nav-link:nth-child(2) { animation-delay: 0.15s; }
+.mobile-menu:not(.hidden) .mobile-nav-link:nth-child(3) { animation-delay: 0.2s; }
+.mobile-menu:not(.hidden) .mobile-nav-link:nth-child(4) { animation-delay: 0.25s; }
+.mobile-menu:not(.hidden) .mobile-nav-link:nth-child(5) { animation-delay: 0.3s; }
+
+.mobile-menu .mobile-nav-link {
+  opacity: 0;
+  transform: translateX(-15px);
+}
+
+@keyframes mobileNavItemIn {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mobile-nav-link:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(5px);
+}
+
+.mobile-cta {
+  background: linear-gradient(135deg, #c9948d, #b87971);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(184, 121, 113, 0.4);
+  margin-top: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+}
+
+.mobile-menu .mobile-cta {
+  opacity: 0;
+  transform: translateX(-15px);
+}
+
+.mobile-menu:not(.hidden) .mobile-cta {
+  animation: mobileNavItemIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.35s;
+}
+
+.mobile-cta:hover {
+  background: linear-gradient(135deg, #d9b3ae, #c9948d);
+  box-shadow: 0 6px 20px rgba(184, 121, 113, 0.6);
+  transform: translateY(-2px) translateX(5px);
+}
+
+/* ---------- Responsive adjustments ---------- */
+@media (max-width: 768px) {
+  .navbar-glass {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .mobile-menu {
+    margin: 0.75rem 1rem 0;
+  }
+}
+
+/* ---------- Scroll Reveal Animations ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-scale.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* For elements that shouldn't affect layout when hidden */
+.reveal-none {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-none.active {
+  opacity: 1;
+}
+
+/* Stagger delays for child elements */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-stagger.active > *:nth-child(1) { transition-delay: 0.1s; }
+.reveal-stagger.active > *:nth-child(2) { transition-delay: 0.2s; }
+.reveal-stagger.active > *:nth-child(3) { transition-delay: 0.3s; }
+.reveal-stagger.active > *:nth-child(4) { transition-delay: 0.4s; }
+.reveal-stagger.active > *:nth-child(5) { transition-delay: 0.5s; }
+.reveal-stagger.active > *:nth-child(6) { transition-delay: 0.6s; }
+
+.reveal-stagger.active > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Handle nested reveal elements - let them animate independently */
+.reveal-stagger .reveal,
+.reveal-stagger .reveal-left,
+.reveal-stagger .reveal-right,
+.reveal-stagger .reveal-scale,
+.reveal-stagger .reveal-none {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-stagger.active .reveal.active,
+.reveal-stagger.active .reveal-left.active,
+.reveal-stagger.active .reveal-right.active,
+.reveal-stagger.active .reveal-scale.active,
+.reveal-stagger.active .reveal-none.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale,
+  .reveal-stagger > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
  
