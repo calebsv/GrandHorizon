@@ -1,0 +1,81 @@
+/* ==========================================================
+   Bliss — Wellness Sanctuary
+   Estilos complementares ao Tailwind
+   ========================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #2b2a26;
+}
+
+/* ---------- Placeholders de imagem ----------
+   Substitua estes blocos por <img src="..."> reais,
+   ou defina um background-image no CSS usando o
+   data-img correspondente como referência. */
+
+/* miniaturas circulares para avatares dos depoimentos */
+.avatar-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: repeating-linear-gradient(
+    45deg,
+    #d9b3ae,
+    #d9b3ae 6px,
+    #e7cac6 6px,
+    #e7cac6 12px
+  );
+  border: 2px solid #f4f6f2;
+}
+
+/* ---------- Cards de quarto ---------- */
+.room-card {
+  background: #f7f7f4;
+  border-radius: 1rem;
+  padding: 0.75rem 0.75rem 1.25rem;
+  box-shadow: 0 10px 30px -12px rgba(43, 42, 38, 0.18);
+}
+
+.stars {
+  margin-top: 0.35rem;
+  color: #b87971;
+  letter-spacing: 0.15em;
+  font-size: 0.85rem;
+}
+
+/* ---------- Depoimentos ---------- */
+.testimonial {
+  background: #f7f7f4;
+  border-radius: 1rem;
+  padding: 1.75rem;
+  box-shadow: 0 10px 30px -12px rgba(43, 42, 38, 0.12);
+}
+
+/* ---------- Ícone de tratamento ---------- */
+.treatment svg {
+  color: #6b7a5e;
+}
+
+/* ---------- Scroll indicator ---------- */
+@keyframes bounce-slow {
+  0%, 100% { transform: translate(-50%, 0); }
+  50%      { transform: translate(-50%, 8px); }
+}
+.animate-bounce-slow {
+  animation: bounce-slow 2.5s ease-in-out infinite;
+}
+
+/* respeita usuários que preferem menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  .animate-bounce-slow {
+    animation: none;
+  }
+}
+
+/* ---------- Menu mobile ---------- */
+#mobile-menu.open {
+  display: flex;
+}
