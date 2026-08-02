@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grand Horizon | A sua estagia</title>
+    <title>Grand Horizon | A sua estada</title>
     <meta name="description" content="Grand Horizon - O futuro da tecnologia">
     <meta name="author" content="Caleb Lira">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -129,68 +129,94 @@
  
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-12">
       <div class="treatment">
-        <svg class="mx-auto mb-4" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-          <path d="M7 11c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke-linecap="round"/>
-          <path d="M4 14c0-1 .8-2 2-2h12c1.2 0 2 1 2 2v1c0 3-3.6 6-8 6s-8-3-8-6v-1z" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <h3 class="font-serif text-xl mb-2">Massage</h3>
+        <i class="bi bi-wifi text-3xl"></i>
+        <h3 class="font-serif text-xl mb-2">Conexão</h3>
         <p class="text-sm text-ink/60 max-w-[220px] mx-auto leading-relaxed">
-          Full-body therapy that eases tension, calms the nervous system, and restores balance.
+          Rede de sinal disponível em todas as áreas do hotel.
         </p>
       </div>
  
       <div class="treatment">
-        <svg class="mx-auto mb-4" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-          <path d="M12 2v3M12 2c-2 2-2 4 0 5" stroke-linecap="round"/>
-          <path d="M6 9h12l-1.5 9a3 3 0 01-3 2.5h-3a3 3 0 01-3-2.5L6 9z" stroke-linejoin="round"/>
-          <path d="M6 9a6 6 0 0112 0" />
-        </svg>
-        <h3 class="font-serif text-xl mb-2">Aromatherapy</h3>
+        <i class="bi bi-coin text-3xl"></i>
+        <h3 class="font-serif text-xl mb-2">Custo Benefício</h3>
         <p class="text-sm text-ink/60 max-w-[220px] mx-auto leading-relaxed">
-          Essential oils and natural botanicals designed to soothe the senses and lift the mood.
+          Excelente qualidade e conforto por um orçamento justo.
         </p>
       </div>
  
       <div class="treatment">
-        <svg class="mx-auto mb-4" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-          <circle cx="12" cy="6" r="2"/>
-          <path d="M6 18c0-3 2.5-5 6-5s6 2 6 5" stroke-linecap="round"/>
-          <path d="M4 18h16" stroke-linecap="round"/>
-        </svg>
-        <h3 class="font-serif text-xl mb-2">Meditation</h3>
+        <i class="bi bi-lightning-fill text-3xl"></i>
+        <h3 class="font-serif text-xl mb-2">Reserva Rápida</h3>
         <p class="text-sm text-ink/60 max-w-[220px] mx-auto leading-relaxed">
-          Guided sessions to quiet the mind and reconnect with a deeper sense of stillness.
+          Faça sua reserva em poucos minutos com o nosso sistema.
         </p>
       </div>
     </div>
   </section>
  
-  <section id="wellness" class="max-w-5xl mx-auto px-6 md:px-10 pb-16 md:pb-24">
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+  <section id="wellness" class="max-w-5xl mx-auto px-6 md:px-10 py-16 md:py-24 mt-10">
+    <h2 class="font-serif text-center text-4xl md:text-5xl mb-14">Depoimentos de hóspedes</h2>
  
-      <blockquote class="testimonial">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="avatar-placeholder" data-img="avatar-1" aria-label="Foto do hóspede 1"></div>
-          <div class="avatar-placeholder -ml-4" data-img="avatar-2" aria-label="Foto do hóspede 2"></div>
+    <div class="testimonial-carousel relative" tabindex="0" aria-roledescription="carrossel" aria-label="Depoimentos de hóspedes">
+ 
+      <button type="button" id="testimonial-prev" aria-label="Depoimento anterior"
+        class="carousel-btn carousel-btn--prev">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+ 
+      <div class="carousel-viewport overflow-hidden">
+        <div id="testimonial-track" class="carousel-track flex">
+ 
+          <div class="carousel-slide">
+            <blockquote class="testimonial">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="avatar-placeholder" data-img="avatar-1" aria-label="Foto do hóspede 1"></div>
+                <div class="avatar-placeholder -ml-4" data-img="avatar-2" aria-label="Foto do hóspede 2"></div>
+              </div>
+              <p class="italic text-sm md:text-base leading-relaxed mb-4">
+                "A hospedagem na pousada GrandHorizon foi uma experiência que jamais esquecerei, sempre levarei comigo, da ida a volta foram serviços de qualidade"
+              </p>
+              <footer class="text-sm font-medium">Cleide &amp; Cleber</footer>
+            </blockquote>
+          </div>
+ 
+          <div class="carousel-slide">
+            <blockquote class="testimonial">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="avatar-placeholder" data-img="avatar-3" aria-label="Foto do hóspede 3"></div>
+              </div>
+              <p class="italic text-sm md:text-base leading-relaxed mb-4">
+                "Sem dúvidas um dos melhores hotéis em que já fiquei, tudo é baseado no nosso conforto e lazer, voltarei mais vezes."
+              </p>
+              <footer class="text-sm font-medium">João Nogueira</footer>
+            </blockquote>
+          </div>
+ 
+          <div class="carousel-slide">
+            <blockquote class="testimonial">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="avatar-placeholder" data-img="avatar-4" aria-label="Foto do hóspede 4"></div>
+              </div>
+              <p class="italic text-sm md:text-base leading-relaxed mb-4">
+                "O hotel possui quartos e suítes de altíssima qualidade, além de um atendimento impecável."
+              </p>
+              <footer class="text-sm font-medium">Camila Reyes</footer>
+            </blockquote>
+          </div>
+ 
         </div>
-        <p class="italic text-sm md:text-base leading-relaxed mb-4">
-          "This Bliss experience is a retreat. I want to tranquility knowing we could go somewhere
-          totally different — it's a place unlike any other."
-        </p>
-        <footer class="text-sm font-medium">Barry &amp; Pura</footer>
-      </blockquote>
+      </div>
  
-      <blockquote class="testimonial">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="avatar-placeholder" data-img="avatar-3" aria-label="Foto do hóspede 3"></div>
-        </div>
-        <p class="italic text-sm md:text-base leading-relaxed mb-4">
-          "I truly gave you tranquility and walked out at the same time — beauty, relaxation with
-          fully candlelight sitting alongside the tea in the outdoor library."
-        </p>
-        <footer class="text-sm font-medium">Wenya Derrent</footer>
-      </blockquote>
+      <button type="button" id="testimonial-next" aria-label="Próximo depoimento"
+        class="carousel-btn carousel-btn--next">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
  
+      <div id="testimonial-dots" class="flex items-center justify-center gap-2 mt-8"></div>
     </div>
   </section>
  
@@ -216,6 +242,6 @@
       </div>
     </div>
   </footer>    
-  <script src="script.js"></script>
+  <script src="script.js" type=""></script>
 </body>
 </html>
