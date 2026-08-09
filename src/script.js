@@ -1,10 +1,5 @@
-// ==========================================================
-// Bliss — Wellness Sanctuary
-// Interações da página
-// ==========================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Scroll effect for navbar
   const navbar = document.querySelector('.navbar-glass');
 
   if (navbar) {
@@ -17,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Scroll reveal animations
   const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-stagger, .reveal-none');
 
   const revealObserver = new IntersectionObserver((entries) => {
@@ -45,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const total = slides.length;
     let index = 0;
 
-    // cria um dot por depoimento
     function buildDots() {
       dotsWrap.innerHTML = '';
       for (let i = 0; i < total; i++) {
@@ -65,15 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function render() {
-      // desloca por porcentagem: 100% = largura de um slide.
-      // Isso funciona em qualquer largura de tela, sem precisar medir
-      // pixels (e sem depender de o Tailwind já ter aplicado as classes).
       track.style.transform = `translateX(-${index * 100}%)`;
       updateDots();
     }
 
     function goTo(newIndex) {
-      index = ((newIndex % total) + total) % total; // sempre dentro de 0..total-1, com loop
+      index = ((newIndex % total) + total) % total;
       render();
     }
 
@@ -88,13 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
     prevBtn.addEventListener('click', prev);
     nextBtn.addEventListener('click', next);
 
-    // navegação por teclado quando o carrossel está em foco
     track.closest('.testimonial-carousel').addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft') prev();
       if (e.key === 'ArrowRight') next();
     });
 
-    // swipe em telas touch
     let startX = 0;
     let isDragging = false;
 
@@ -116,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
     render();
   }
 
-  // realce simples do link ativo no scroll (opcional / progressivo)
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('header nav a[href^="#"]');
 
@@ -138,7 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach((section) => observer.observe(section));
   }
 
-  // Mobile menu toggle
   const menuToggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   const menuIcon = menuToggle?.querySelector('.menu-icon');
@@ -148,20 +134,16 @@ document.addEventListener('DOMContentLoaded', () => {
     menuToggle.addEventListener('click', () => {
       const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
 
-      // Toggle menu visibility
       mobileMenu.classList.toggle('hidden');
 
-      // Toggle icon
       if (menuIcon && closeIcon) {
         menuIcon.classList.toggle('hidden');
         closeIcon.classList.toggle('hidden');
       }
 
-      // Update aria attribute
       menuToggle.setAttribute('aria-expanded', !isExpanded);
     });
 
-    // Close mobile menu when clicking on a link
     const mobileLinks = mobileMenu.querySelectorAll('a');
     mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
@@ -174,7 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
       if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
         if (!mobileMenu.classList.contains('hidden')) {
@@ -188,6 +169,105 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-});
 
-document.getElementById('footer-year').textContent = new Date().getFullYear();
+  const modal = document.getElementById('reserva-modal');
+  const triggers = document.querySelectorAll('.reserva-trigger');
+
+  if (modal && triggers.length) {
+    const modalBox = modal.querySelector('.modal-box');
+    const closeBtn = document.getElementById('modal-close');
+    const doneBtn = document.getElementById('modal-done');
+    const form = document.getElementById('reserva-form');
+    const formView = document.getElementById('modal-form-view');
+    const successView = document.getElementById('modal-success-view');
+    const roomNameEl = document.getElementById('modal-room-name');
+
+    let lastFocused = null;
+
+    function resetModalContent() {
+      formView.classList.remove('hidden');
+      successView.classList.add('hidden');
+      form.reset();
+    }
+
+    function openModal(roomName) {
+      lastFocused = document.activeElement;
+      resetModalContent();
+      roomNameEl.textContent = roomName ? `Você está solicitando: ${roomName}` : '';
+
+      modal.classList.remove('hidden', 'is-closing');
+      void modal.offsetWidth;
+      modal.classList.add('is-visible');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+
+      const firstInput = document.getElementById('res-nome');
+      if (firstInput) setTimeout(() => firstInput.focus(), 200);
+    }
+
+    function closeModal() {
+      if (modal.classList.contains('hidden')) return;
+
+      modal.classList.remove('is-visible');
+      modal.classList.add('is-closing');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+
+      const onAnimEnd = () => {
+        modal.classList.add('hidden');
+        modal.classList.remove('is-closing');
+        modal.removeEventListener('animationend', onAnimEnd);
+        if (lastFocused) lastFocused.focus();
+      };
+      modal.addEventListener('animationend', onAnimEnd);
+    }
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal(trigger.dataset.room);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    doneBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-visible')) {
+        closeModal();
+      }
+    });
+
+    let autoCloseTimer = null;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      formView.classList.add('hidden');
+      successView.classList.remove('hidden');
+
+      clearTimeout(autoCloseTimer);
+      autoCloseTimer = setTimeout(() => {
+        closeModal();
+      }, 3000);
+    });
+
+    closeBtn.addEventListener('click', () => clearTimeout(autoCloseTimer));
+    doneBtn.addEventListener('click', () => clearTimeout(autoCloseTimer));
+
+    modalBox.addEventListener('click', (e) => e.stopPropagation());
+  }
+
+  // Ano do rodapé
+  const footerYear = document.getElementById('footer-year');
+  if (footerYear) {
+    footerYear.textContent = new Date().getFullYear();
+  }
+});

@@ -110,7 +110,7 @@
         <img src="https://images.unsplash.com/photo-1737517302831-e7b8a8eaa97c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
         <h3 class="font-serif text-2xl mt-4 text-center">Deluxe Suite</h3>
         <div class="stars text-center" aria-label="4 de 5 estrelas">★★★★★</div>
-        <a href="" class="room-cta mt-4 w-full inline-block text-center text-sm px-6 py-2.5 rounded-full transition-all duration-300">
+        <a href="#" data-room="Deluxe Suite" class="room-cta mt-4 w-full inline-block text-center text-sm px-6 py-2.5 rounded-full transition-all duration-300 reserva-trigger">
           Reservar
         </a>
       </article>
@@ -119,7 +119,7 @@
         <img src="https://plus.unsplash.com/premium_photo-1661962688308-2b00b88b9765?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
         <h3 class="font-serif text-2xl mt-4 text-center">Suíte com vista para o mar</h3>
         <div class="stars text-center" aria-label="4 de 5 estrelas">★★★★★</div>
-        <a href="" class="room-cta mt-4 w-full inline-block text-center text-sm px-6 py-2.5 rounded-full transition-all duration-300">
+        <a href="#" data-room="Suíte com vista para o mar" class="room-cta mt-4 w-full inline-block text-center text-sm px-6 py-2.5 rounded-full transition-all duration-300 reserva-trigger">
           Reservar
         </a>
       </article>
@@ -128,7 +128,7 @@
         <img src="https://plus.unsplash.com/premium_photo-1661875135365-16aab794632f?q=80&w=653&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="foto da suite">
         <h3 class="font-serif text-2xl mt-4 text-center">Suíte com SPA incluso</h3>
         <div class="stars text-center" aria-label="4 de 5 estrelas">★★★★★</div>
-        <a href="" class="room-cta mt-4 w-full inline-block text-center text-sm px-6 py-2.5 rounded-full transition-all duration-300">
+        <a href="#" data-room="Suíte com SPA incluso" class="room-cta mt-4 w-full inline-block text-center text-sm px-6 py-2.5 rounded-full transition-all duration-300 reserva-trigger">
           Reservar
         </a>
       </article>
@@ -232,11 +232,11 @@
     </div>
   </section>
  
-  <footer class="relative bg-sage-900 text-sage-100 pt-16 pb-8 mt-10 overflow-hidden reveal" id="about">
+  <footer class="relative bg-sage-900 text-sage-100 pt-16 pb-8 mt-10 overflow-hidden" id="about">
     <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-clay-400/10 blur-3xl"></div>
     <div class="absolute -bottom-32 -left-20 w-72 h-72 rounded-full bg-sage-400/10 blur-3xl"></div>
 
-    <div class="relative max-w-6xl mx-auto px-6 md:px-10">
+    <div class="relative max-w-6xl mx-auto px-6 md:px-10 reveal">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10 reveal-stagger">
 
         <div class="md:col-span-2">
@@ -299,6 +299,58 @@
       </div>
     </div>
   </footer>
+
+  <div id="reserva-modal" class="modal-overlay hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <button type="button" id="modal-close" aria-label="Fechar modal" class="modal-close">&times;</button>
+ 
+      <div id="modal-form-view">
+        <h3 id="modal-title" class="font-serif text-3xl mb-1">Solicitar reserva</h3>
+        <p id="modal-room-name" class="text-sm text-ink/60 mb-6"></p>
+ 
+        <form id="reserva-form" class="space-y-4 text-left" novalidate>
+          <div>
+            <label for="res-nome" class="block text-xs uppercase tracking-wide mb-1">Nome completo</label>
+            <input type="text" id="res-nome" name="nome" required class="modal-input" placeholder="Seu nome">
+          </div>
+ 
+          <div>
+            <label for="res-email" class="block text-xs uppercase tracking-wide mb-1">E-mail</label>
+            <input type="email" id="res-email" name="email" required class="modal-input" placeholder="voce@email.com">
+          </div>
+ 
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="res-checkin" class="block text-xs uppercase tracking-wide mb-1">Check-in</label>
+              <input type="date" id="res-checkin" name="checkin" required class="modal-input">
+            </div>
+            <div>
+              <label for="res-checkout" class="block text-xs uppercase tracking-wide mb-1">Check-out</label>
+              <input type="date" id="res-checkout" name="checkout" required class="modal-input">
+            </div>
+          </div>
+ 
+          <div>
+            <label for="res-hospedes" class="block text-xs uppercase tracking-wide mb-1">Hóspedes</label>
+            <input type="number" id="res-hospedes" name="hospedes" min="1" value="2" required class="modal-input">
+          </div>
+ 
+          <button type="submit" class="modal-submit w-full mt-2">Confirmar reserva</button>
+        </form>
+      </div>
+ 
+      <div id="modal-success-view" class="hidden text-center py-4">
+        <div class="success-icon mx-auto mb-4">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="font-serif text-3xl mb-2">Reserva concluída!</h3>
+        <p class="text-sm text-ink/60">Recebemos sua solicitação e em breve entraremos em contato para confirmar os detalhes da sua estadia.</p>
+        <button type="button" id="modal-done" class="modal-submit mt-6">Fechar</button>
+      </div>
+    </div>
+  </div>
   
   <script src="script.js" type=""></script>
 </body>
