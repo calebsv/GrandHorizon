@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Grand Horizon </title>
+    <title>Reserva de Hospedagem| Grand Horizon </title>
     <link rel="stylesheet" href="loginStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css"
         integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA=="
@@ -26,15 +26,20 @@
     </div>
 
 
+
     <main>
 
 
 
 
 
-        <i class="fa-solid fa-circle-user" style="color: hsl(0, 0%, 100%);" id="avatar"></i>
 
         <form action="#" id="form">
+
+            <div class="title">
+                <i class="fa-solid fa-circle-user" style="color: hsl(0, 0%, 100%);" id="avatar"></i>
+                <p>Grand Horizon </p>
+            </div>
 
 
             <div class="input-box">
@@ -55,16 +60,78 @@
                 <input type="tel" id="Telefone" placeholder="Telefone">
             </div>
 
-            <div class="input-box">
 
-                <i class="fa-solid fa-shield-halved" style="color: hsl(0, 0%, 100%);"></i>
-                <input type="password" id="password" placeholder="password">
+            <div class="input-box">
+                <i class="fa-solid fa-credit-card" style="color: hsl(0, 0%, 100%);"></i>
+
+                <select class="input" name="pagamento" id="pagamento" required>
+
+                    <option value="" selected disabled>Forma de pagamento</option>
+                    <option value="pix">PIX</option>
+                    <option value="credito">Cartão de Crédito</option>
+                    <option value="debito">Cartão de Débito</option>
+                    <option value="dinheiro">Dinheiro</option>
+                    <option value="boleto">Boleto Bancário</option>
+                </select>
+
+
+            </div>
+
+
+
+            <div class="input-box">
+                <i class="fa-solid fa-calendar-days" style="color: hsl(0, 0%, 100%);"></i>
+
+                <select class="input" id="days" required>
+
+                    <option value="" selected disabled>Período de hospedagem</option>
+                    <option value="um">1 Dia</option>
+                    <option value="dois">2 Dias</option>
+                    <option value="debito">3 Dias</option>
+                    <option value="semana">1 Semana</option>
+                    <option value="mes">1 Mês</option>
+                </select>
+
+
+            </div>
+
+
+            <div class="input-box">
+                <i class="fa-solid fa-user-group" style="color: hsl(0, 0%, 100%);"></i>
+
+                <select class="input" id="people" required>
+
+                    <option value="" selected disabled>Qantidade de hópedes</option>
+                    <option value="um">1 hóspede</option>
+                    <option value="dois">2 hóspedes</option>
+                    <option value="debito">3 hóspedes</option>
+                    <option value="semana">4 hóspedes</option>
+
+                </select>
+
+
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-house" style="color: hsl(0, 0%, 100%);"></i>
+
+                <select class="input" id="hospedagem" required>
+
+                    <option value="" selected disabled>Opções de hospedagem</option>
+                    <option value="um">Standard</option>
+                    <option value="dois">Deluxe</option>
+                    <option value="debito">Suíte</option>
+                    <option value="semana">Familiar</option>
+
+                </select>
+
+
             </div>
 
 
 
 
-            <input type="submit" id="Login-btn" value="LOGIN">
+            <input type="submit" id="Login-btn" value="Solicitar reserva">
 
 
 
