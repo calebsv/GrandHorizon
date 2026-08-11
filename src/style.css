@@ -908,3 +908,11 @@ body {
 #sim-finalizar:disabled:hover {
   background: #c9948d;
 }
+
+.suite-modal-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  display: block;
+}
