@@ -68,6 +68,7 @@
           <li><a href="#home" class="nav-link">Início</a></li>
           <li><a href="#tracking" class="nav-link">Destaques</a></li>
           <li><a href="#bene" class="nav-link">Benefícios</a></li>
+          <li><a href="#simulacao" class="nav-link">Simulação</a></li>
           <li><a href="#feedbacks" class="nav-link">Depoimentos</a></li>
           <li><a href="#about" class="nav-link">Sobre</a></li>
         </ul>
@@ -81,6 +82,7 @@
         <li><a href="#home" class="mobile-nav-link">Início</a></li>
         <li><a href="#tracking" class="mobile-nav-link">Destaques</a></li>
         <li><a href="#bene" class="mobile-nav-link">Benefícios</a></li>
+        <li><a href="#simulacao" class="mobile-nav-link">Simulação</a></li>
         <li><a href="#feedbacks" class="mobile-nav-link">Depoimentos</a></li>
         <li><a href="#about" class="mobile-nav-link">Sobre</a></li>
         <li><a href="login/login.html" target="_blank" class="mobile-cta inline-block px-6 py-2.5 rounded-full w-max text-center">Embarcar</a></li>
@@ -166,6 +168,66 @@
     </div>
   </section>
  
+<section id="simulacao" class="max-w-6xl mx-auto px-6 md:px-10 py-10 md:py-16 reveal">
+  <h2 class="font-serif text-center text-4xl md:text-5xl mb-3">Simule sua estadia</h2>
+  <p class="text-center text-sm text-ink/60 max-w-lg mx-auto mb-14">
+    Escolha sua suíte, adicione experiências extras e veja o valor total em tempo real.
+  </p>
+
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr_0.85fr_1fr] gap-6 items-start reveal-stagger">
+
+    <div class="sim-card order-1">
+      <h3 class="font-serif text-2xl mb-4">Escolha sua suíte</h3>
+
+      <div id="sim-suite-tabs" class="flex flex-wrap gap-2 mb-5"></div>
+
+      <img id="sim-suite-img" src="" alt="" class="sim-suite-img">
+
+      <div class="mt-4">
+        <h4 id="sim-suite-name" class="font-serif text-xl"></h4>
+        <p id="sim-suite-price" class="text-clay-500 text-sm font-medium mt-1"></p>
+      </div>
+
+      <ul id="sim-suite-features" class="sim-feature-list"></ul>
+
+      <button type="button" id="sim-suite-select" class="sim-select-btn w-full mt-5">
+        Selecionar
+      </button>
+    </div>
+
+    <div id="sim-summary" class="sim-summary-card order-3 lg:order-2">
+      <h3 class="font-serif text-2xl mb-5 text-center">Resumo</h3>
+
+      <div class="sim-summary-block">
+        <p class="sim-summary-label">Suíte</p>
+        <div id="sim-summary-suite" class="sim-summary-row sim-empty">Nenhuma suíte selecionada</div>
+      </div>
+
+      <div class="sim-summary-block">
+        <p class="sim-summary-label">Serviços adicionais</p>
+        <div id="sim-summary-services" class="sim-empty">Nenhum serviço selecionado</div>
+      </div>
+
+      <hr class="my-5 border-sage-200">
+
+      <div class="flex items-center justify-between">
+        <span class="font-serif text-lg">Total</span>
+        <span id="sim-total" class="font-serif text-2xl text-clay-500">R$ 0</span>
+      </div>
+
+      <button type="button" id="sim-finalizar" class="modal-submit w-full mt-6" disabled>
+        Finalizar reserva
+      </button>
+    </div>
+
+    <div class="sim-card order-2 lg:order-3">
+      <h3 class="font-serif text-2xl mb-4">Experiências e serviços</h3>
+      <ul id="sim-services-list" class="sim-service-list"></ul>
+    </div>
+
+  </div>
+</section>
+
   <section id="feedbacks" class="max-w-5xl mx-auto px-6 md:px-10 py-16 md:py-24 mt-10 reveal">
     <h2 class="font-serif text-center text-4xl md:text-5xl mb-14">Depoimentos de hóspedes</h2>
  

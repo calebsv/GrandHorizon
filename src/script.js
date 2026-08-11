@@ -263,11 +263,188 @@ document.addEventListener('DOMContentLoaded', () => {
     doneBtn.addEventListener('click', () => clearTimeout(autoCloseTimer));
 
     modalBox.addEventListener('click', (e) => e.stopPropagation());
+    document.addEventListener('open-reserva-modal', (e) => {
+  openModal(e.detail?.room || '');
+});
   }
 
   // Ano do rodapé
   const footerYear = document.getElementById('footer-year');
   if (footerYear) {
     footerYear.textContent = new Date().getFullYear();
+  }
+  // Simulação
+  const suiteTabsWrap = document.getElementById('sim-suite-tabs');
+  const suiteImg = document.getElementById('sim-suite-img');
+  const suiteNameEl = document.getElementById('sim-suite-name');
+  const suitePriceEl = document.getElementById('sim-suite-price');
+  const suiteFeaturesEl = document.getElementById('sim-suite-features');
+  const suiteSelectBtn = document.getElementById('sim-suite-select');
+  const servicesListEl = document.getElementById('sim-services-list');
+  const summarySuiteEl = document.getElementById('sim-summary-suite');
+  const summaryServicesEl = document.getElementById('sim-summary-services');
+  const totalEl = document.getElementById('sim-total');
+  const finalizarBtn = document.getElementById('sim-finalizar');
+
+  if (suiteTabsWrap && servicesListEl) {
+
+    const suites = [
+      {
+        id: 'deluxe',
+        name: 'Deluxe Suite',
+        price: 890,
+        img: 'https://images.unsplash.com/photo-1737517302831-e7b8a8eaa97c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        features: ['Cama king size', 'Vista para o jardim', 'Ar-condicionado', 'Wi-fi de alta velocidade']
+      },
+      {
+        id: 'mar',
+        name: 'Suíte com vista para o mar',
+        price: 1290,
+        img: 'https://plus.unsplash.com/premium_photo-1661962688308-2b00b88b9765?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        features: ['Varanda privativa', 'Vista panorâmica para o mar', 'Banheira de hidromassagem', 'Serviço de quarto 24h']
+      },
+      {
+        id: 'spa',
+        name: 'Suíte com SPA incluso',
+        price: 1590,
+        img: 'https://plus.unsplash.com/premium_photo-1661875135365-16aab794632f?q=80&w=653&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        features: ['SPA privativo', 'Sauna', 'Roupão e chinelos exclusivos', 'Vista para as montanhas']
+      }
+    ];
+
+    const services = [
+      { id: 'cafe', name: 'Café da manhã premium', price: 60 },
+      { id: 'jantar', name: 'Jantar romântico à luz de velas', price: 250 },
+      { id: 'tour', name: 'City tour guiado', price: 180 },
+      { id: 'transfer', name: 'Transfer aeroporto (ida e volta)', price: 150 },
+      { id: 'massagem', name: 'Massagem relaxante (casal)', price: 320 },
+      { id: 'checkout', name: 'Late check-out', price: 90 }
+    ];
+
+    let previewSuiteId = suites[0].id;
+    let selectedSuiteId = null;
+    const selectedServiceIds = new Set();
+
+    const formatBRL = (value) =>
+      value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    function getSuite(id) {
+      return suites.find((s) => s.id === id);
+    }
+
+    function renderSuiteTabs() {
+      suiteTabsWrap.innerHTML = '';
+      suites.forEach((suite) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'sim-tab' + (suite.id === previewSuiteId ? ' is-active' : '');
+        btn.textContent = suite.name;
+        btn.addEventListener('click', () => {
+          previewSuiteId = suite.id;
+          renderSuiteTabs();
+          renderSuitePreview();
+        });
+        suiteTabsWrap.appendChild(btn);
+      });
+    }
+
+    function renderSuitePreview() {
+      const suite = getSuite(previewSuiteId);
+      suiteImg.src = suite.img;
+      suiteImg.alt = suite.name;
+      suiteNameEl.textContent = suite.name;
+      suitePriceEl.textContent = `${formatBRL(suite.price)} / noite`;
+      suiteFeaturesEl.innerHTML = suite.features
+        .map((f) => `<li><i class="bi bi-check2"></i>${f}</li>`)
+        .join('');
+
+      const isSelected = selectedSuiteId === suite.id;
+      suiteSelectBtn.textContent = isSelected ? 'Selecionada' : 'Selecionar';
+      suiteSelectBtn.classList.toggle('is-selected', isSelected);
+    }
+
+    function renderServices() {
+      servicesListEl.innerHTML = '';
+      services.forEach((service) => {
+        const isSelected = selectedServiceIds.has(service.id);
+        const li = document.createElement('li');
+        li.className = 'sim-service-item' + (isSelected ? ' is-selected' : '');
+        li.innerHTML = `
+          <div>
+            <p class="sim-service-name">${service.name}</p>
+            <p class="sim-service-price">${formatBRL(service.price)}</p>
+          </div>
+          <button type="button" class="sim-service-select${isSelected ? ' is-selected' : ''}" data-id="${service.id}">
+            ${isSelected ? 'Selecionado' : 'Selecionar'}
+          </button>
+        `;
+        servicesListEl.appendChild(li);
+      });
+
+      servicesListEl.querySelectorAll('.sim-service-select').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.id;
+          if (selectedServiceIds.has(id)) {
+            selectedServiceIds.delete(id);
+          } else {
+            selectedServiceIds.add(id);
+          }
+          renderServices();
+          renderSummary();
+        });
+      });
+    }
+
+    function renderSummary() {
+      const suite = selectedSuiteId ? getSuite(selectedSuiteId) : null;
+
+      if (suite) {
+        summarySuiteEl.classList.remove('sim-empty');
+        summarySuiteEl.innerHTML = `<span>${suite.name}</span><span>${formatBRL(suite.price)}</span>`;
+      } else {
+        summarySuiteEl.classList.add('sim-empty');
+        summarySuiteEl.textContent = 'Nenhuma suíte selecionada';
+      }
+
+      const chosenServices = services.filter((s) => selectedServiceIds.has(s.id));
+      if (chosenServices.length) {
+        summaryServicesEl.classList.remove('sim-empty');
+        summaryServicesEl.innerHTML = chosenServices
+          .map((s) => `<div class="sim-summary-row"><span>${s.name}</span><span>${formatBRL(s.price)}</span></div>`)
+          .join('');
+      } else {
+        summaryServicesEl.classList.add('sim-empty');
+        summaryServicesEl.textContent = 'Nenhum serviço selecionado';
+      }
+
+      const total = (suite ? suite.price : 0) + chosenServices.reduce((sum, s) => sum + s.price, 0);
+      totalEl.textContent = formatBRL(total);
+
+      finalizarBtn.disabled = !suite;
+      finalizarBtn.dataset.roomName = suite ? suite.name : '';
+      finalizarBtn.dataset.services = chosenServices.map((s) => s.name).join(', ');
+    }
+
+    suiteSelectBtn.addEventListener('click', () => {
+      selectedSuiteId = previewSuiteId;
+      renderSuitePreview();
+      renderSummary();
+    });
+
+    finalizarBtn.addEventListener('click', () => {
+      if (finalizarBtn.disabled) return;
+      const roomLabel = finalizarBtn.dataset.services
+        ? `${finalizarBtn.dataset.roomName} + ${finalizarBtn.dataset.services}`
+        : finalizarBtn.dataset.roomName;
+
+      document.dispatchEvent(new CustomEvent('open-reserva-modal', {
+        detail: { room: roomLabel }
+      }));
+    });
+
+    renderSuiteTabs();
+    renderSuitePreview();
+    renderServices();
+    renderSummary();
   }
 });
