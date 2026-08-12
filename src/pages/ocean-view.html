@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrandHorizon | Sessão de Suítes</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          sage: {
+            50:  '#f4f6f2',
+            100: '#e4e9df',
+            200: '#d3ddca',
+            300: '#b9c7ac',
+            400: '#94a884',
+            900: '#232a1f',
+          },
+          clay: {
+            300: '#d9b3ae',
+            400: '#c9948d',
+            500: '#b87971',
+          },
+          ink: '#2b2a26',
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'serif'],
+          sans: ['"Jost"', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  body { background: linear-gradient(180deg, #ffffff 0%, #f4f6f2 100%); }
+
+  .back-link {
+    color: #2b2a26;
+    transition: color .25s ease, transform .25s ease;
+  }
+  .back-link:hover { color: #b87971; transform: translateX(-3px); }
+
+  .icon-badge {
+    width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid #d3ddca;
+    background: #fff;
+    color: #b87971;
+  }
+
+  .event-card {
+    background: #fff;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 20px 45px -20px rgba(43,42,38,0.18);
+    border: 1px solid #e4e9df;
+  }
+
+  .event-image {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    object-fit: cover;
+  }
+
+  .event-details {
+    background: #f4f6f2;
+  }
+
+  .divider {
+    width: 42px;
+    height: 1px;
+    background: #b87971;
+    margin: 0.5rem auto 1.25rem;
+  }
+</style>
+</head>
+<body class="min-h-screen font-sans text-ink antialiased">
+
+  <div class="max-w-4xl mx-auto px-6 md:px-10 py-8 md:py-12">
+
+    <header class="flex items-center gap-3 pb-5 border-b border-sage-200 mb-8">
+      <a href="../index.html" class="back-link flex items-center gap-2 text-sm">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <h1 class="font-serif text-2xl md:text-3xl tracking-wide">Sessão de Suítes</h1>
+    </header>
+
+    <div class="flex items-center gap-4 mb-8">
+      <span class="icon-badge">
+        <i class="bi bi-cup-hot text-xl"></i>
+      </span>
+      <h2 class="font-serif text-2xl md:text-3xl">Vista para o Oceano</h2>
+    </div>
+
+    <section class="event-card grid grid-cols-1 md:grid-cols-2">
+
+      <img
+        src="https://plus.unsplash.com/premium_photo-1661962688308-2b00b88b9765?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="Vista para o oceano da Suíte de Vista para o Oceano"
+        class="event-image">
+
+      <div class="event-details p-8 md:p-10 flex flex-col justify-center text-center">
+        <h3 class="font-serif text-3xl uppercase tracking-wide mb-1">GrandHorizon</h3>
+        <div class="divider"></div>
+
+        <h4 class="font-serif text-xl mb-4">Sobre a Suíte</h4>
+
+        <p class="text-sm text-ink/70 leading-relaxed mb-5 max-w-sm mx-auto">
+            A Vista para o Oceano do GrandHorizon oferece uma experiência de hospedagem luxuosa e
+            confortável, com decoração elegante e vistas incríveis. Cada detalhe foi
+            cuidadosamente planejado para proporcionar uma estadia memorável.
+        </p>
+
+        <p class="text-sm text-ink/70 leading-relaxed max-w-sm mx-auto">
+            A suíte dispõe uma vista para o oceano de águas belas, jamais prestigiado a olho nu, e uma área de estar espaçosa. Além disso, os hóspedes podem desfrutar
+            de serviços exclusivos, como café da manhã gourmet e acesso a instalações de
+            lazer premium.
+        </p>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</body>
+</html>
